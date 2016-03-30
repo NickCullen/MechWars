@@ -12,8 +12,5 @@ UCLASS()
 class MECHWARS_API AMechWarsGameMode : public AGameMode
 {
 	GENERATED_BODY()
-	
-	
-	
-	
+
 };
