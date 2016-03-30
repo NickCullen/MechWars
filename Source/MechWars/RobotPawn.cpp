@@ -9,6 +9,9 @@ ARobotPawn::ARobotPawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	// Defaults
+	Speed = 10.0f;
 	
 }
 
@@ -31,5 +34,16 @@ void ARobotPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent
 {
 	Super::SetupPlayerInputComponent(InputComponent);
 
+	InputComponent->BindAxis(TEXT("Forward"), this, &ARobotPawn::ForwardAxis);
+	InputComponent->BindAxis(TEXT("Right"), this, &ARobotPawn::RightAxis);
 }
 
+void ARobotPawn::ForwardAxis(float value)
+{
+	
+}
+
+void ARobotPawn::RightAxis(float value)
+{
+
+}

@@ -2,17 +2,17 @@
 
 #pragma once
 
-#include "GameFramework/Pawn.h"
-#include "RobotPawn.generated.h"
+#include "GameFramework/Character.h"
+#include "RobotCharacter.generated.h"
 
 UCLASS()
-class MECHWARS_API ARobotPawn : public APawn
+class MECHWARS_API ARobotCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
-	ARobotPawn();
+	// Sets default values for this character's properties
+	ARobotCharacter();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -31,5 +31,4 @@ public:
 	// Variables
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Speed;
-
 };
