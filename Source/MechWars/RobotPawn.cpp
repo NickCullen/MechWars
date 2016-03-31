@@ -2,7 +2,7 @@
 
 #include "MechWars.h"
 #include "RobotPawn.h"
-
+#include "RobotPawnMovement.h"
 
 // Sets default values
 ARobotPawn::ARobotPawn()
@@ -13,6 +13,8 @@ ARobotPawn::ARobotPawn()
 	// Defaults
 	Speed = 10.0f;
 	
+	// Components
+	RobotMovement = CreateDefaultSubobject<URobotPawnMovement>(TEXT("RobotMovementComponent"));
 }
 
 // Called when the game starts or when spawned
@@ -20,6 +22,7 @@ void ARobotPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	RobotMovement->UpdatedComponent = RootComponent;	// Set to our root
 }
 
 // Called every frame
@@ -40,10 +43,17 @@ void ARobotPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent
 
 void ARobotPawn::ForwardAxis(float value)
 {
-	
+	RobotMovement->AddInputVector(GetActorForwardVector() * value * Speed);
 }
 
 void ARobotPawn::RightAxis(float value)
 {
+	FRotator newRotation = GetActorRotation();
+	newRotation.Yaw += value;
+	SetActorRotation(newRotation);
+}
 
+UPawnMovementComponent* ARobotPawn::GetMovementComponent() const
+{
+	return RobotMovement;
 }

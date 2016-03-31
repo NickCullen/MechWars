@@ -23,7 +23,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
-	
+	// Override to get pawn movement func
+	virtual UPawnMovementComponent* GetMovementComponent() const override;
+
 	// Movement axis
 	void ForwardAxis(float value);
 	void RightAxis(float value);
@@ -32,4 +34,6 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Speed;
 
+	// Movement componrnt
+	class URobotPawnMovement* RobotMovement;
 };
